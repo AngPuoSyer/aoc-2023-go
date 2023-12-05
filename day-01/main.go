@@ -58,13 +58,10 @@ func part1(input []string) {
 
 func part2(input []string) {
 	totalSum := 0
-	// Regex to parse out both the spelled out numbers and digits
 	re := regexp.MustCompile(`^(\d|one|two|three|four|five|six|seven|eight|nine)`)
 
 	for _, line := range input {
-
 		var numbersInLine []string
-
 		for i := range line {
 			found := re.FindString(line[i:])
 			if found != "" {
@@ -74,7 +71,6 @@ func part2(input []string) {
 
 		for index, word := range numbersInLine {
 			_, err := strconv.Atoi(word)
-
 			if err != nil && word != "" {
 				numbersInLine[index] = wordToNum(word)
 			}
